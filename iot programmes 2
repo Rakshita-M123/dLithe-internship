@@ -1,0 +1,132 @@
+#3. interfacing IR sensor
+int IR=12;
+void setup() {
+ pinMode(IR,INPUT);
+ Serial.begin(9600);
+}
+void loop() {
+ int IRvalue=digitalRead(IR);
+ if(IRvalue==HIGH)
+ {
+ Serial.println("object is detected");
+ }
+ else
+ {
+  Serial.println("object is not detected");
+}
+}
+
+#4. interfacing led and ir sensor
+int IR=12;
+int led=42;
+void setup() {
+ pinMode(IR,INPUT);
+ pinMode(led,OUTPUT);
+ Serial.begin(9600);
+}
+void loop() {
+ int IRvalue=digitalRead(IR);
+ if(IRvalue==HIGH)
+ {
+ Serial.println("object is detected");
+ digitalWrite(led,HIGH);
+delay(2000);
+ }
+ else
+ {
+  Serial.println("object is not detected");
+  digitalWrite(led,LOW);
+delay(2000);
+}
+}
+
+
+#5. led,buzzer,ir sensor
+int IR=12;
+int led=42;
+int buzzer=6;
+void setup() {
+ pinMode(IR,INPUT);
+ pinMode(led,OUTPUT);
+ pinMode(buzzer,OUTPUT);
+ Serial.begin(9600);
+}
+void loop() {
+ int IRvalue=digitalRead(IR);
+ if(IRvalue==HIGH)
+ {
+ Serial.println("object is detected");
+ digitalWrite(led,HIGH);
+delay(2000);
+ }
+ else
+ {
+  Serial.println("object is not detected");
+  digitalWrite(buzzer,HIGH);
+delay(2000);
+}
+}
+
+#6. soundsensor
+int soundsensor=A0;
+void setup()
+{
+  pinMode(soundsensor,INPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  int sensorvalue=analogRead(soundsensor);
+  Serial.print(sensorvalue);
+  delay(3000);
+}
+
+#6. interfacing soundsensor with led
+int soundsensor=A0;
+int led=42;
+void setup()
+{
+  pinMode(soundsensor,INPUT);
+   pinMode(led,OUTPUT);
+  Serial.begin(9600);
+}
+void loop()
+{
+  int sensorvalue=analogRead(soundsensor);
+  if(sensorvalue>500)
+  {
+  digitalWrite(led,HIGH);
+  Serial.println("sensorvalue is above 500");
+  delay(1000);
+  }
+  else
+  {
+    digitalWrite(led,LOW);
+     Serial.println("sensorvalue is below 500");
+     delay(1000);
+  }
+  Serial.println(sensorvalue);
+  delay(3000);
+}
+
+
+7. #interfacing touch sensor with esp32
+int touchsensor=12;
+void setup() {
+  pinMode(touchsensor,INPUT);
+  Serial.begin(9600);
+}
+void loop() {
+ int touchvalue=digitalRead(touchsensor);
+ if(touchvalue==HIGH)
+ {
+  Serial.println("touch is detected");
+  delay(1000);
+ }
+ else
+ {
+   Serial.println("touch is not detected");
+  delay(1000);
+ }
+}
+
