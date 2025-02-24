@@ -1,0 +1,107 @@
+Gassensor........
+
+int gassensor=12;
+int led=42;
+int buzzer=6;
+void setup() {
+ pinMode(gassensor,INPUT);
+  pinMode(led,OUTPUT);
+   pinMode(buzzer,OUTPUT);
+ Serial.begin(9600);
+}
+void loop() {
+  int gasvalue=analogRead(gassensor);
+  if(gasvalue>50)
+  {
+  digitalWrite(42,HIGH);
+  digitalWrite(6,LOW);
+  Serial.print("gas is detected");
+  }
+  else
+  {
+    Serial.print("gas is not detected");
+  }
+}
+
+flame sensor......
+int flamesensor=12;
+int led=42;
+int buzzer=6;
+void setup() {
+ pinMode(flamesensor,INPUT);
+  pinMode(led,OUTPUT);
+   pinMode(buzzer,OUTPUT);
+ Serial.begin(9600);
+}
+void loop() {
+  int flamevalue=digitalRead(flamesensor);
+  if(flamevalue==HIGH)
+  {
+  digitalWrite(42,HIGH);
+  digitalWrite(6,HIGH);
+  Serial.print("flame is detected");
+  }
+  else
+  {
+    Serial.print("flame is not detected");
+  }
+}
+
+laser...........
+int laser=10;
+int IR= 12;
+void setup() {
+pinMode(IR,INPUT);
+pinMode(laser,OUTPUT);
+Serial.begin(9600);
+}
+void loop() {
+int IRvalue=digitalRead(IR);
+if(IRvalue==HIGH)
+{
+  Serial.print("object is detected");
+  digitalWrite(laser,HIGH);
+  delay(1000);
+}
+else
+{
+   Serial.print("object is not detected");
+  digitalWrite(laser,LOW);
+  delay(2000);
+}
+}
+
+tilt sensor...........
+int tiltsensor=A0;
+int led= 42;
+int buzzer=5;
+int relay=6;
+void setup() {
+pinMode(tiltsensor,INPUT);
+pinMode(led,OUTPUT);
+pinMode(buzzer,OUTPUT);
+pinMode(relay,OUTPUT);
+Serial.begin(9600);
+}
+void loop() {
+int tiltsensorvalue=analogRead(tiltsensor);
+if(tiltsensorvalue==90)
+{
+  Serial.print("vehicle is at 90 degree");
+  digitalWrite(led,HIGH);
+  delay(1000);
+}
+else if(tiltsensorvalue==180)
+{
+ Serial.print("vehicle is at 180 degree");
+  digitalWrite(buzzer,HIGH);
+  delay(1000);
+} 
+else
+{
+   Serial.print("vehicle is at 360 degree");
+  digitalWrite(relay,HIGH);
+  delay(2000);
+}
+}
+
